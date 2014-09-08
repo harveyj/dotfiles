@@ -1,5 +1,10 @@
 (add-to-list 'load-path "~/.elisp")
 
+; Depends on:
+; Emacs 24
+; auto-complete.el
+; themes/
+
 ; basic one-liners
 (set 'indent-tabs-mode nil)
 (setq c-basic-offset 2)
@@ -21,6 +26,7 @@
 (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
 (if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
 (transient-mark-mode t)
+(linum-mode)
 
 ; windmove
 (when (fboundp 'windmove-default-keybindings)
@@ -59,4 +65,13 @@
 (add-to-list 'ac-dictionary-directories "/Users/harveyj/.elisp//ac-dict")
 (ac-config-default)
 
+; recent files
+(require 'recentf)
+(recentf-mode 1)
+(setq recentf-max-menu-items 25)
+(global-set-key "\C-x\ \C-r" 'recentf-open-files)
+
+; sublime-like theme!
+(add-to-list 'custom-theme-load-path "~/.elisp/themes")
+(load-theme 'spolsky t)
 
